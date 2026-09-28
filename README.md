@@ -82,7 +82,7 @@ you read nothing else, read these.
 ### Then — the platform services every real application needs
 
 | | lesson | what it covers |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | 6 | [Secret Manager](06-secrets.ipynb) | OpenBao: where credentials live, and how they reach a pod without ever touching git |
 | 7 | [Storage](07-storage.ipynb) | PVCs and storage classes, GLADE, and the on-site S3 |
 | 8 | [GitHub Actions](08-github-actions.ipynb) | Runner scale sets on cluster hardware, building images without a Docker daemon, and CI security |
