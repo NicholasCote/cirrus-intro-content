@@ -61,7 +61,7 @@ should say `PASS`. If any say `FAIL`, the message names what to fix — and
 
 ## The pages
 
-Eleven notebooks, in the order the work actually happens. They are yours to run
+Sixteen notebooks, in the order the work actually happens. They are yours to run
 and scribble in: once you have run one it is kept across sessions rather than
 replaced from the image.
 
@@ -69,31 +69,51 @@ replaced from the image.
 
 | | lesson | what it covers |
 | --- | --- | --- |
-| 1 | [Orientation](01-orientation.ipynb) | What CIRRUS is, the two sites, when to use it instead of Casper or Derecho, how to get access, and what comes with it |
+| 0 | [Introduction](00-introduction.ipynb) | Why the platform looks the way it does: from your own server, to VMs, to containers, to Kubernetes, and why the code lives in git. No commands, and the place to start if Kubernetes is new to you |
+| 1 | [Orientation](01-orientation.ipynb) | What CIRRUS is, the two sites, when to use it instead of Casper or Derecho, how to get access — including `kubectl` from your own machine — and what comes with it |
 | 2 | [Containers](02-containers.ipynb) | What a container actually is, how to build one, and the registry that holds it — including CVE scans and SBOMs |
 | 3 | [Kubernetes](03-kubernetes.ipynb) | `kubectl` and your namespace; Pods, Deployments, Services, Ingresses, ConfigMaps, PVCs — written and applied by hand |
 | 4 | [Helm](04-helm.ipynb) | Packaging those manifests into something installable, configurable and reviewable |
-| 5 | [Argo CD](05-argocd.ipynb) | GitOps: the cluster pulling its own desired state from a repository, and how an application gets onboarded here |
+| 5 | [Argo CD](05-argocd.ipynb) | GitOps: the cluster pulling its own desired state from a repository, how an application gets onboarded here, and optional progressive releases with Argo Rollouts |
 
-Pages 1 through 5 build on each other, and the application you deploy by hand in
+Page 0 is background with nothing to run; skip it if you already know why
+Kubernetes exists. Pages 1 through 5 build on each other, and the application you deploy by hand in
 lesson 3 is the one you package in lesson 4 and hand to Argo CD in lesson 5. If
 you read nothing else, read these.
 
-### Then — the platform services every real application needs
+### Then — what the same application needs next
 
 | | lesson | what it covers |
 | --- | --- | --- |
 | 6 | [Secret Manager](06-secrets.ipynb) | OpenBao: where credentials live, and how they reach a pod without ever touching git |
-| 7 | [Storage](07-storage.ipynb) | PVCs and storage classes, GLADE, and the on-site S3 |
-| 8 | [GitHub Actions](08-github-actions.ipynb) | Runner scale sets on cluster hardware, building images without a Docker daemon, and CI security |
+| 7 | [Storage](07-storage.ipynb) | PVCs and storage classes, a PostgreSQL database with CloudNativePG, GLADE, and the on-site S3 |
+| 8 | [Automation](08-github-actions.ipynb) | GitHub Actions runners on cluster hardware, building images without a Docker daemon, CI security — and Argo Workflows for scheduled data pipelines |
 | 9 | [Observability](09-observability.ipynb) | Finding your logs and metrics in Grafana, and alerting on your own application |
-| 10 | [Specialized workloads](10-workloads.ipynb) | Jupyter, functions as a service, MPI, and the LLM service |
+
+### Then — the services you pick from
+
+| | lesson | what it covers |
+| --- | --- | --- |
+| 10 | [Specialized workloads](10-workloads.ipynb) | A one-screen map of pages 11 to 14: which one fits your work |
+| 11 | [Jupyter](11-jupyter.ipynb) | JupyterHub, GPUs, your own environments, Dask, and public Binder |
+| 12 | [Functions](12-functions.ipynb) | Fission: a function at a URL with no chart, and the same thing under GitOps |
+| 13 | [MPI](13-mpi.ipynb) | The MPI Operator, and when Derecho is the better answer |
+| 14 | [LLM services](14-llm.ipynb) | The local LLM: chat, editors and coding agents, and using them safely |
 | — | [Troubleshooting](99-troubleshooting.ipynb) | The failures people actually hit here |
 
-Pages 6 to 10 are reference material rather than walkthroughs — a web UI, a
-ticket, or a manifest you commit rather than a command you type — so they are
-mostly prose, with few or no cells to run. Read the one you need when you need
-it; each is self-contained. Troubleshooting is a lookup table.
+Pages 6 to 9 carry on with the same application, each adding the next thing a
+real service needs: credentials, storage, automated builds, and monitoring. They
+are mostly prose, with few cells to run, because the work is a web UI, a ticket,
+or a manifest you commit rather than a command you type. Each still makes sense
+on its own when you come back to it later.
+
+Pages 10 to 14 are for work that is not a web service. They do not depend on each
+other: page 10 says which one you need, and you can read just that one.
+Troubleshooting is a lookup table.
+
+Every page from 2 to 9 ends with **Where that leaves the workload**: what the
+application can do now, what it still cannot, and which page fixes that. Read
+those endings in a row and you have the whole workshop in miniature.
 
 ### Running them
 
@@ -226,4 +246,6 @@ volumes, PostgreSQL, Dask, OpenBao secrets and Prometheus alerts. Every page fro
   *Report Issue* forms linked from that site, or <cirrus-admin@ucar.edu>.
 * At a live workshop: ask. That is what the room is for.
 
-Ready — [1. Orientation: what CIRRUS is](01-orientation.ipynb).
+Ready — [0. Introduction: how we got to Kubernetes](00-introduction.ipynb), or
+straight to [1. Orientation: what CIRRUS is](01-orientation.ipynb) if you know
+the background.
